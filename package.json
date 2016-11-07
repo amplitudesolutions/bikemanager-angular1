@@ -1,0 +1,22 @@
+{
+  "name": "bike-manager",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The bike manager!",
+  "repository": "https://github.com/amplitudesolutions/bike manager",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "bower": "^1.7.9",
+    "shelljs": "^0.7.5"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1",
+    "pretest": "npm install"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}

@@ -1,0 +1,35 @@
+<md-dialog aria-label="Add Bike">
+	<form ng-cloak>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<p>
+					Use this section to add a new bike
+				</p>
+				<div layout-gt-xs="row">
+					<md-input-container flex-gt-xs>
+						<label>Name</label>
+						<input ng-model="bike.name">
+					</md-input-container>
+				</div>
+				<div layout-gt-xs="row">
+					<md-input-container flex-gt-xs>
+						<label>Year</label>
+						<input ng-model="bike.year">
+					</md-input-container>
+					<md-input-container flex-gt-xs>
+						<label>Size</label>
+						<input ng-model="bike.size">
+					</md-input-container>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="cancel()">
+				Cancel
+			</md-button>
+			<md-button type="submit" class="md-raised md-primary" ng-click="save()">
+				Save
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

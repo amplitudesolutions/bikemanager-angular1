@@ -1,0 +1,44 @@
+<div>
+	<div flex-xs layout="row">
+      <md-card md-theme="default" flex="30" md-theme-watch ng-repeat="b in bikes">
+        <md-card-title ui-sref="bike({id: b._id})">
+          <md-card-title-text>
+            <span class="md-headline">{{b.name}}</span>
+            <span class="md-subhead">{{b.year}} Size {{b.size}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-md card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+        	<md-button class="md-icon-button" aria-label="Wanted Items">
+        		<i class="material-icons">shopping_cart</i>
+        		<md-tooltip md-direction="bottom" md-delay="500">
+		        	Wanted Items
+		        </md-tooltip>
+        	</md-button>
+        	<p>{{b.wanted.length}}</p>
+        	<md-button class="md-icon-button" aria-label="Maintenance Items">
+        		<i class="material-icons">build</i>
+        		<md-tooltip md-direction="bottom" md-delay="500">
+		        	Maintenance Items
+		        </md-tooltip>
+        	</md-button>
+        	<p>{{b.maintenance.length}}</p>
+	        <!-- <md-button ui-sref="bike({id: b._id})" class="md-icon-button">
+	        	<i class="material-icons">directions_bike</i>
+	        </md-button> -->
+	        <md-button class="md-icon-button" aria-label="Edit Bike" ng-click="editBike(b, $event)">
+        		<i class="material-icons">edit</i>
+        	</md-button>
+	        <!-- <md-button>Action 2</md-button> -->
+        </md-card-actions>
+      </md-card>
+    </div>
+
+    <div class="fab-button">
+		<md-button class="md-fab md-primary" aria-label="" ng-click="addBike($event)">
+          <md-icon>add</md-icon>
+        </md-button>
+    </div>
+</div>

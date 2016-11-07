@@ -1,0 +1,19 @@
+{
+  "name": "bike-manager",
+  "description": "The bike manager",
+  "version": "0.1.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.8",
+    "angular-ui-router": "~0.3.2",
+    "angular-loader": "~1.5.8",
+    "angular-animate": "~1.5.8",
+    "angular-sanitize": "~1.5.8",
+    "angular-aria": "~1.5.8",
+    "angular-messages": "~1.5.8",
+    "lodash": "~4.16.6",
+    "angular-material": "~1.1.0"
+  }
+}

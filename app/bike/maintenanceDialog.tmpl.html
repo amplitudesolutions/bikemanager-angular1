@@ -1,0 +1,29 @@
+<md-dialog aria-label="Add Maintenance">
+	<form ng-cloak>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<p>
+					Use this section to add any maintenance you want to complete on your bike.
+				</p>
+				<div layout-gt-xs="row">
+					<md-input-container flex-gt-xs>
+						<label>Description</label>
+						<input ng-model="maintenance.description">
+					</md-input-container>
+					<md-input-container>
+						<label>Completed</label>
+						<md-datepicker md-hide-icons="calendar" ng-model="maintenance.completeddate"></md-datepicker>
+					</md-input-container>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="cancel()">
+				Cancel
+			</md-button>
+			<md-button type="submit" class="md-raised md-primary" ng-click="save()">
+				Save
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
