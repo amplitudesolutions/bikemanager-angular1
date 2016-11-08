@@ -12,11 +12,10 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 443",
+    "start": "http-server -a localhost -p 8000 -c-1",
     "pretest": "npm install"
   },
   "dependencies": {
-    "bower": "^1.7.9",
     "lodash": "^3.10.1"
   }
 }
