@@ -3,7 +3,7 @@
 angular.module('amplitudeApp.services.bikeService', [])
 
 .factory('bike', ['$http', function($http){
-	var url = 'http://localhost:8080/api/';
+	var url = 'https://limitless-everglades-69582.herokuapp.com/api/';
 
 	return {
 		getAll: function() {
