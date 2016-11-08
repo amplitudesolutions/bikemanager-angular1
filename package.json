@@ -16,6 +16,7 @@
     "pretest": "npm install"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "express": "~4.13.4"
   }
 }
