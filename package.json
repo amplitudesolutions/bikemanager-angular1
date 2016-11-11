@@ -16,6 +16,7 @@
     "pretest": "npm install"
   },
   "dependencies": {
+    "bower": "~1.8.0",
     "lodash": "^3.10.1",
     "express": "~4.13.4",
     "gulp": "~3.9.1",
