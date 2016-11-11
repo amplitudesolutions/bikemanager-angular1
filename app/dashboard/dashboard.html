@@ -1,6 +1,6 @@
 <div>
-	<div flex-xs layout="row">
-      <md-card md-theme="default" flex="30" md-theme-watch ng-repeat="b in bikes">
+	<div layout-gt-xs="row">
+      <md-card md-theme="default" flex-gt-xs="20" md-theme-watch ng-repeat="b in bikes">
         <md-card-title ui-sref="bike({id: b._id})">
           <md-card-title-text>
             <span class="md-headline">{{b.name}}</span>
