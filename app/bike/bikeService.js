@@ -2,8 +2,10 @@
 
 angular.module('amplitudeApp.services.bikeService', [])
 
-.factory('bike', ['$http', function($http){
-	var url = 'https://limitless-everglades-69582.herokuapp.com/api/';
+// TEMP_USER = Just USER ID after creating USER, need to change once USER service is implemented.
+
+.factory('bike', ['$http', 'API_URL', 'TEMP_USER', function($http, API_URL, TEMP_USER){
+	var url = API_URL;
 
 	return {
 		getAll: function() {
@@ -14,7 +16,7 @@ angular.module('amplitudeApp.services.bikeService', [])
 
 		},
 		add: function(item) {
-			item.user = '581df76e09f63ef825000004';
+			item.user = TEMP_USER;
 
 			return $http.post(url + 'bikes', item)
 				.success(function(data) {
