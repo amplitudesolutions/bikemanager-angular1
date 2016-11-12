@@ -50,6 +50,13 @@ angular.module('amplitudeApp.dashboard', ['amplitudeApp.services.dashboardServic
 
 		});
 	};
+
+	$scope.deleteBike = function(item) {
+		bike.delete(item._id).then(function(data) {
+			refreshBikeList();
+		});
+	};
+
 }])
 
 ;

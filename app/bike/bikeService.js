@@ -37,6 +37,19 @@ angular.module('amplitudeApp.services.bikeService', [])
 					return error;
 				});
 		},
+		delete: function(id) {
+			return $http.delete(url + 'bikes/' + id)
+				.success(function(data) {
+					return data;
+				})
+				.error(function(error) {
+					console.log(error);
+					return error;
+				});
+		},
+		gotPart: function(bike, item) {
+			return $http.get(url + 'bikes/' + bike + '/wanted/' + item._id + '/got');
+		},
 		addBuild: function(bike, item) {
 			return $http.post(url + 'bikes/' + bike + '/build', item)
 				.success(function(data) {
@@ -47,8 +60,18 @@ angular.module('amplitudeApp.services.bikeService', [])
 					return error;
 				});
 		},
-		editBuild: function(bike, build, item) {
-			return $http.put(url + 'bikes/' + bike + '/build/' + build, item)
+		editBuild: function(bike, item) {
+			return $http.put(url + 'bikes/' + bike + '/build/' + item._id, item)
+				.success(function(data) {
+					return data;
+				})
+				.error(function(error) {
+					console.log(error);
+					return error;
+				});
+		},
+		deleteBuild: function(bike, item) {
+			return $http.delete(url + 'bikes/' + bike + '/build/' + item._id)
 				.success(function(data) {
 					return data;
 				})
@@ -106,6 +129,16 @@ angular.module('amplitudeApp.services.bikeService', [])
 					console.log(error);
 					return error;
 				});		
+		},
+		deleteWanted: function(bike, item) {
+			return $http.delete(url + 'bikes/' + bike + '/wanted/' + item._id)
+				.success(function(data) {
+					return data;
+				})
+				.error(function(error) {
+					console.log(error);
+					return error;
+				});
 		}
 	}
 }])

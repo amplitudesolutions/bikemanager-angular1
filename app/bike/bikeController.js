@@ -12,45 +12,47 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 	});
 
 	$scope.addBuild = function(ev) {
-		var confirm = $mdDialog.prompt()
-	      	.title('Enter a part of your build')
-	      	// .textContent('Bowser is a common name.')
-	      	.placeholder('Part Description')
-	      	// .ariaLabel('Dog name')
-	      	// .initialValue('Buddy')	
-	      	.targetEvent(ev)
-			.ok('Add')
-	    	.cancel('Cancel');
-
-	    $mdDialog.show(confirm).then(function(result) {
-	    	bike.addBuild(bikeId, {description: result}).then(function(data) {
+		$mdDialog.show({
+			controller: 'partsDialogCtrl',
+			templateUrl: 'bike/partsDialog.tmpl.html',
+			parant: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true,
+			locals: {
+				item: null
+			}
+		}).then(function(part) {
+			bike.addBuild(bikeId, part).then(function(data) {
 	    		$scope.bike = data.data;
 	    	});
-	      	// $scope.status = 'You decided to name your dog ' + result + '.';
-	    }, function() {
-	      	// $scope.status = 'You didn\'t name your dog.';
-	    });
+		}, function() {
+
+		});
 	};
 
 	$scope.editBuild = function(build, ev) {
-		var confirm = $mdDialog.prompt()
-	      	.title('Enter a part of your build')
-	      	// .textContent('Bowser is a common name.')
-	      	.placeholder('Part Description')
-	      	// .ariaLabel('Dog name')
-	      	.initialValue(build.description)	
-	      	.targetEvent(ev)
-			.ok('Add')
-	    	.cancel('Cancel');
-
-	    $mdDialog.show(confirm).then(function(result) {
-	    	bike.editBuild(bikeId, build._id, {description: result}).then(function(data) {
+		$mdDialog.show({
+			controller: 'partsDialogCtrl',
+			templateUrl: 'bike/partsDialog.tmpl.html',
+			parant: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true,
+			locals: {
+				item: angular.copy(build)
+			}
+		}).then(function(part) {
+			bike.editBuild(bikeId, part).then(function(data) {
 	    		$scope.bike = data.data;
 	    	});
-	      	// $scope.status = 'You decided to name your dog ' + result + '.';
-	    }, function() {
-	      	// $scope.status = 'You didn\'t name your dog.';
-	    });
+		}, function() {
+
+		});
+	};
+
+	$scope.deleteBuild = function(build) {
+		bike.deleteBuild(bikeId, build).then(function(data) {
+			$scope.bike = data.data;
+		});
 	};
 
 	$scope.addMaintenance = function(ev) {
@@ -151,6 +153,18 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 	    	});
 		}, function() {
 
+		});
+	};
+
+	$scope.deleteWanted = function(partItem) {
+		bike.deleteWanted(bikeId, partItem).then(function(data) {
+			$scope.bike = data.data;
+		});
+	};
+
+	$scope.gotPart = function(partItem) {
+		bike.gotPart(bikeId, partItem).then(function(data) {
+			$scope.bike = data.data;
 		});
 	};
 }])

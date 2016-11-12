@@ -1,14 +1,16 @@
 <div>
-	<div layout-gt-xs="row">
+	<div layout-gt-xs="row" layout-wrap layout-align="center none">
       <md-card md-theme="default" flex-gt-xs="20" md-theme-watch ng-repeat="b in bikes">
         <md-card-title ui-sref="bike({id: b._id})">
           <md-card-title-text>
             <span class="md-headline">{{b.name}}</span>
             <span class="md-subhead">{{b.year}} Size {{b.size}}</span>
           </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-md card-media"></div>
-          </md-card-title-media>
+          <!-- <md-card-title-media>
+            <div class="md-media-md card-media">
+              <img src="http://placehold.it/50x50" class="md-card-image">
+            </div>
+          </md-card-title-media> -->
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
         	<md-button class="md-icon-button" aria-label="Wanted Items">
@@ -28,9 +30,32 @@
 	        <!-- <md-button ui-sref="bike({id: b._id})" class="md-icon-button">
 	        	<i class="material-icons">directions_bike</i>
 	        </md-button> -->
-	        <md-button class="md-icon-button" aria-label="Edit Bike" ng-click="editBike(b, $event)">
+	        <!-- <md-button class="md-icon-button" aria-label="Edit Bike" ng-click="editBike(b, $event)">
         		<i class="material-icons">edit</i>
-        	</md-button>
+        	</md-button> -->
+          <md-menu md-position-mode="target-right target" >
+            <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <md-icon md-menu-origin class="md-icon-button">
+                <i class="material-icons">more_vert</i>
+            </md-icon>
+            </md-button>
+            <md-menu-content width="2">
+              <md-menu-item>
+                <md-button ng-click="editBike(b, $event)">
+                  <div layout="row" flex>
+                    <p flex>Edit</p>
+                  </div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="deleteBike(b)">
+                    <div layout="row" flex>
+                      <p flex>Delete</p>
+                    </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
 	        <!-- <md-button>Action 2</md-button> -->
         </md-card-actions>
       </md-card>
