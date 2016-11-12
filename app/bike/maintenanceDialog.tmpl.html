@@ -5,12 +5,12 @@
 				<p>
 					Use this section to add any maintenance you want to complete on your bike.
 				</p>
-				<div layout="row">
+				<div layout-gt-xs="row">
 					<md-input-container flex>
 						<label>Description</label>
 						<input ng-model="maintenance.description">
 					</md-input-container>
-					<md-input-container>
+					<md-input-container flex-xs>
 						<label>Completed</label>
 						<md-datepicker md-hide-icons="calendar" ng-model="maintenance.completeddate"></md-datepicker>
 					</md-input-container>
