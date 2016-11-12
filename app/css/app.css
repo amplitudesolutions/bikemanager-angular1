@@ -45,3 +45,9 @@ padding: 0px 0px 8px 0px;
   right: 15px;
   bottom: 6px;
 }
+
+.overflow-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

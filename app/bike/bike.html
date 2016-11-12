@@ -20,7 +20,7 @@
 						<md-list-item class="md-2-line" ng-click="editBuild(b, $event)" ng-repeat="b in bike.build">
 							<div class="md-list-item-text">
 				            	<h3>{{b.description}}</h3>
-				            	<p>{{b.url}}</p>
+				            	<p class="overflow-text">{{b.url}}</p>
 				         	</div>
 				         	<md-menu md-position-mode="target-right target">
 					          	<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
@@ -64,7 +64,7 @@
 						<md-checkbox class="md-primary" ng-click="gotPart(w)"></md-checkbox>
 						<div class="md-list-item-text">
 			            	<h3>{{w.description}}</h3>
-			            	<p>{{w.url}}</p>
+			            	<p class="overflow-text">{{w.url}}</p>
 			         	</div>
 			         	<md-menu md-position-mode="target-right target" >
 				          	<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
