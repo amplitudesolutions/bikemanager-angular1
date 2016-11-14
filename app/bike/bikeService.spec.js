@@ -1,4 +1,4 @@
-describe('Bikes factory', function() {
+describe('Services: Bikes factory', function() {
 	var bike, $httpBackend;
 
 	var RESPONSE_BIKE = {
@@ -36,7 +36,7 @@ describe('Bikes factory', function() {
 		beforeEach(function() {
 			result = {};
 
-			spyOn(bike, "getAll").and.callThrough();
+			spyOn(bike, 'getAll').and.callThrough();
 		});
 
 		it('should return all bikes', function() {
@@ -143,6 +143,31 @@ describe('Bikes factory', function() {
 			expect(result.data.name).toEqual(RESPONSE_BIKE.name);
 			expect(result.data.year).toEqual(RESPONSE_BIKE.year);
 			expect(result.data.size).toEqual(RESPONSE_BIKE.size);
+		});
+	});
+
+	describe('.delete(bike)', function() {
+		var result;
+
+		beforeEach(function() {
+			result = {};
+			spyOn(bike, "delete").and.callThrough();
+		});
+
+		it('should delete 1 bike', function() {
+			expect(RESPONSE_SUCCESS.length).toEqual(1);
+
+			$httpBackend.whenDELETE(API + 'bikes/1').respond(200, RESPONSE_SUCCESS.splice(0));
+
+			expect(bike.delete).not.toHaveBeenCalled();
+			expect(result).toEqual({});
+
+			bike.delete(1).then(function(res) {
+				result = res;
+			});
+			
+			$httpBackend.flush();
+			expect(RESPONSE_SUCCESS.length).toEqual(0);
 		});
 	});
 

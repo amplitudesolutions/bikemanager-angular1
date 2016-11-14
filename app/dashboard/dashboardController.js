@@ -24,11 +24,7 @@ angular.module('amplitudeApp.dashboard', ['amplitudeApp.services.dashboardServic
 				item: null
 			}
 		}).then(function(newBike) {
-			bike.add(newBike).then(function(data) {
-	    		$scope.bikes.push(data.data);
-	    	});
-		}, function() {
-
+			refreshBikeList();
 		});
 	};
 
@@ -43,11 +39,7 @@ angular.module('amplitudeApp.dashboard', ['amplitudeApp.services.dashboardServic
 				item: angular.copy(bikeItem)
 			}
 		}).then(function(bikeResult) {
-			bike.edit(bikeResult).then(function(data) {
-	    		refreshBikeList();
-	    	});
-		}, function() {
-
+			refreshBikeList();
 		});
 	};
 

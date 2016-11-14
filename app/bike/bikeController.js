@@ -200,8 +200,11 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 	};
 }])
 
-.controller('bikeDialogCtrl', ['$scope', '$mdDialog', 'item', function($scope, $mdDialog, item) {
+.controller('bikeDialogCtrl', ['$scope', '$mdDialog', 'item', 'bike', function($scope, $mdDialog, item, bike) {
+	$scope.headerText = "Use this section to add a new bike";
+
 	if (item) {
+		$scope.headerText = "Use this section to edit your bike details";
 		$scope.bike = item;
 	}
 	
@@ -210,7 +213,16 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 	};
 
 	$scope.save = function() {
-		$mdDialog.hide($scope.bike);
+		var returnBike = {};
+		if (item) {
+			bike.edit($scope.bike).then(function(data) {
+	    		$mdDialog.hide(data);
+	    	});
+		} else {
+			bike.add($scope.bike).then(function(data) {
+	    		$mdDialog.hide(data);
+	    	});
+		}
 	};
 }])
 
