@@ -26,7 +26,7 @@
     "postinstall": "bower install",
     "prestart": "npm install",
     "pretest": "npm install",
-    "test": "./node_modules/.bin/karma start --single-run --browsers Chrome"
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
     "bower": "~1.8.0",
