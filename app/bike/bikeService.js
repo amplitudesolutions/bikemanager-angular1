@@ -13,11 +13,9 @@ angular.module('amplitudeApp.services.bikeService', [])
 		},
 		get: function(id) {
 			return $http.get(url + 'bikes/' + id);
-
 		},
 		add: function(item) {
 			item.user = TEMP_USER;
-
 			return $http.post(url + 'bikes', item)
 				.success(function(data) {
 					return data;
