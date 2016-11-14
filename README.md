@@ -1,5 +1,7 @@
 Bike manager
 
+[![Build Status](https://travis-ci.org/amplitudesolutions/bikemanager-angular1.svg?branch=master)](https://travis-ci.org/amplitudesolutions/bikemanager-angular1)
+
 Angular and Material Design
 
 
