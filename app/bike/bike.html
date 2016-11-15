@@ -104,7 +104,7 @@
 		        	</md-card-header-text>
 		        </md-card-header>
 				<md-list flex>
-					<md-list-item class="md-2-line" ng-click="editMaintenance(m)" ng-repeat="m in bike.maintenance">
+					<md-list-item class="md-2-line" ng-click="editMaintenance(m)" ng-repeat="m in bike.maintenance | limitTo: maintItemsDisplay">
 						<md-checkbox class="md-primary" ng-checked="checkCompleted(m)" ng-click="updateCompleted(m)"></md-checkbox>
 						<div class="md-list-item-text">
 		            		<h3>{{m.description}}</h3>
@@ -127,7 +127,10 @@
 				        </md-menu>
 					</md-list-item>
 				</md-list>
-				<md-card-actions layout="row" layout-align="end center">
+				<md-card-actions layout="row" layout-align="start center">
+					<md-card-icon-actions>
+						<md-button ng-click="displayMoreMaintenance()" ng-show="showMoreMaintenance">More</md-button>
+					</md-card-icon-actions>
 		          	<md-button ng-click="addMaintenance($event)">Add Item</md-button>
 		        </md-card-actions>
 			</md-card>

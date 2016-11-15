@@ -4,12 +4,23 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 
 
 .controller('bikeCtrl', ['$scope', '$stateParams', '$mdDialog' ,'bike', function($scope, $stateParams, $mdDialog, bike) {
-	
+	$scope.showMoreMaintenance = false;
 	var bikeId = $stateParams.id;
+
+	$scope.maintItemsDisplay = 5;
 
 	bike.get(bikeId).then(function(data) {
 		$scope.bike = data.data;
+		console.log($scope.bike.maintenance.length);
+		if ($scope.bike.maintenance.length > $scope.maintItemsDisplay)
+			$scope.showMoreMaintenance = true;
 	});
+
+	$scope.displayMoreMaintenance = function() {
+		$scope.maintItemsDisplay += 5;
+		if ($scope.bike.maintenance.length <= $scope.maintItemsDisplay)
+			$scope.showMoreMaintenance = false;
+	};
 
 	$scope.addBuild = function(ev) {
 		$mdDialog.show({

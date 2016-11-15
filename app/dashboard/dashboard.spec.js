@@ -107,7 +107,6 @@ describe('Controller: amplitudeApp.dashboard', function() {
 			});
 
 			it('should remove a bike from the list', function() {
-				console.log()
 				expect(BIKES.length).toEqual(3);
 				expect(bike.delete).not.toHaveBeenCalled();
 				
