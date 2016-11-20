@@ -11,7 +11,6 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 
 	bike.get(bikeId).then(function(data) {
 		$scope.bike = data.data;
-		console.log($scope.bike.maintenance.length);
 		if ($scope.bike.maintenance.length > $scope.maintItemsDisplay)
 			$scope.showMoreMaintenance = true;
 	});
