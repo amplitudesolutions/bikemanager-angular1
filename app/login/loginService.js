@@ -24,6 +24,8 @@ angular.module('amplitudeApp.services.loginService', [])
 				.success(function(response) {
 					if (response.token) {
 						$window.sessionStorage.token = response.token;
+						$window.sessionStorage.user = response.user.name
+						$window.sessionStorage.userEmail = response.user.email;
 						// $http.defaults.headers.common.Authorization = response.token;
 					}
 					// return response.user;
@@ -37,6 +39,24 @@ angular.module('amplitudeApp.services.loginService', [])
 		logout: function() {
 			 delete $window.sessionStorage.token;
 			 $state.go('login');
+		},
+		create: function(user) {
+			return $http.post(url + 'users', {name: user.name, email: user.email, password: user.password})
+				.success(function(response) {
+					// if (response.token) {
+						// $window.sessionStorage.token = response.token;
+						// $http.defaults.headers.common.Authorization = response.token;
+					// }
+					// return response.user;
+				})
+				.error(function(error) {
+					delete $window.sessionStorage.token;
+					// console.log(error);
+					// return error;
+				});
+		},
+		get: function() {
+			return {name: $window.sessionStorage.user, email: $window.sessionStorage.userEmail };
 		}
 	}
 }])
