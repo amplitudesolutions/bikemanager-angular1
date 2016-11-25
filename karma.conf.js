@@ -22,11 +22,13 @@ module.exports = function(config) {
         './node_modules/angular-material/angular-material.js',
         './node_modules/angular-mocks/angular-mocks.js',
         './app/bike/bikeService.js',
+        './app/login/loginService.js',
         './app/dashboard/dashboardService.js',
         './app/dashboard/dashboardDirective.js',
         './app/dashboard/dashboardController.js',
         './app/js/app.js',
         './app/bike/bikeService.spec.js',
+        './app/login/loginService.spec.js',
         './app/dashboard/dashboard.spec.js'
     ],
 

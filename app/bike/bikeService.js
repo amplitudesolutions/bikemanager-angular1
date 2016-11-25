@@ -88,8 +88,8 @@ angular.module('amplitudeApp.services.bikeService', [])
 					return error;
 				});	
 		},
-		editMaintenance: function(bike, item) {
-			return $http.put(url + 'bikes/' + bike + '/maintenance/' + item._id, item)
+		editMaintenance: function(item) {
+			return $http.put(url + 'maintenance/' + item._id, item)
 				.success(function(data) {
 					return data;
 				})
@@ -98,8 +98,8 @@ angular.module('amplitudeApp.services.bikeService', [])
 					return error;
 				});	
 		},
-		deleteMaintenance: function(bike, item) {
-			return $http.delete(url + 'bikes/' + bike + '/maintenance/' + item._id)
+		deleteMaintenance: function(item) {
+			return $http.delete(url + 'maintenance/' + item._id)
 				.success(function(data) {
 					return data;
 				})

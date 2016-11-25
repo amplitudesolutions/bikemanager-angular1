@@ -96,8 +96,13 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 				item: angular.copy(maintenanceItem)
 			}
 		}).then(function(maintenance) {
-			bike.editMaintenance(bikeId, maintenance).then(function(data) {
-	    		$scope.bike = data.data;
+			bike.editMaintenance(maintenance).then(function(data) {
+				// Refresh Bike..... maybe need to find better way to do.
+				bike.get(bikeId).then(function(data) {
+					$scope.bike = data.data;
+					if ($scope.bike.maintenance.length > $scope.maintItemsDisplay)
+						$scope.showMoreMaintenance = true;
+				});
 	    	});
 		}, function() {
 
@@ -117,14 +122,25 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 		else
 			item.completeddate = new Date();
 
-		bike.editMaintenance(bikeId, item).then(function(data) {
-			$scope.bike = data.data;
+		bike.editMaintenance(item).then(function(data) {
+			// Refresh Bike..... maybe need to find better way to do.
+			bike.get(bikeId).then(function(data) {
+				$scope.bike = data.data;
+				if ($scope.bike.maintenance.length > $scope.maintItemsDisplay)
+					$scope.showMoreMaintenance = true;
+			});
 		});
 	};
 
 	$scope.deleteMaintenance = function(item) {
-		bike.deleteMaintenance(bikeId, item).then(function(data) {
-			$scope.bike = data.data;
+		bike.deleteMaintenance(item).then(function(data) {
+
+			// Refresh Bike..... maybe need to find better way to do.
+			bike.get(bikeId).then(function(data) {
+				$scope.bike = data.data;
+				if ($scope.bike.maintenance.length > $scope.maintItemsDisplay)
+					$scope.showMoreMaintenance = true;
+			});
 		});
 	};
 
