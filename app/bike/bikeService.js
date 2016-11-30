@@ -2,9 +2,7 @@
 
 angular.module('amplitudeApp.services.bikeService', [])
 
-// TEMP_USER = Just USER ID after creating USER, need to change once USER service is implemented.
-
-.factory('bike', ['$http', 'API_URL', 'TEMP_USER', function($http, API_URL, TEMP_USER){
+.factory('bike', ['$http', 'API_URL', function($http, API_URL){
 	var url = API_URL;
 
 	return {
@@ -15,7 +13,6 @@ angular.module('amplitudeApp.services.bikeService', [])
 			return $http.get(url + 'bikes/' + id);
 		},
 		add: function(item) {
-			item.user = TEMP_USER;
 			return $http.post(url + 'bikes', item)
 				.success(function(data) {
 					return data;

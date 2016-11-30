@@ -6,8 +6,7 @@ var gulpNgConfig = require('gulp-ng-config');
 var configureSetup  = {
   createModule: false,
   constants: {
-  	API_URL: process.env.API_URL,
-  	TEMP_USER: process.env.TEMP_USER
+  	API_URL: process.env.API_URL
   }
 };
 
