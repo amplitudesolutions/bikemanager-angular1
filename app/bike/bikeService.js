@@ -75,6 +75,16 @@ angular.module('amplitudeApp.services.bikeService', [])
 					return error;
 				});
 		},
+		getMaintenance: function(bike, query) {
+			return $http.get(url + "bikes/" + bike + "/maintenance" + query)
+				.success(function(data) {
+					return data;
+				})
+				.error(function(error) {
+					console.log(error);
+					return error;
+				});		
+		},
 		addMaintenance: function(bike, item) {
 			return $http.post(url + 'bikes/' + bike + '/maintenance', item)
 				.success(function(data) {

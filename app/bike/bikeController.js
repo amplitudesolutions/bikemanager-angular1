@@ -193,6 +193,25 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 			$scope.bike = data.data;
 		});
 	};
+
+	$scope.viewHistory = function(ev) {
+		$mdDialog.show({
+			controller: 'historyDialogCtrl',
+			templateUrl: 'bike/bikeHistoryDialog.tmpl.html',
+			parant: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose: true,
+			locals: {
+				item: angular.copy($scope.bike._id)
+			}
+		}).then(function(part) {
+			bike.editWanted(bikeId, part).then(function(data) {
+	    		$scope.bike = data.data;
+	    	});
+		}, function() {
+
+		});
+	};
 }])
 
 .controller('maintenanceDialogCtrl', ['$scope', '$mdDialog', 'item', function($scope, $mdDialog, item) {
@@ -250,6 +269,34 @@ angular.module('amplitudeApp.bike', ['amplitudeApp.services.bikeService', 'ampli
 	    	});
 		}
 	};
+}])
+
+.controller('historyDialogCtrl', ['$scope', '$mdDialog', 'item', 'bike', function($scope, $mdDialog, item, bike) {
+
+	$scope.pages = [];
+	var currentPage = 0;
+	var perPage = 4;
+
+	bike.getMaintenance(item, '?top=100&start=01/01/1999').then(function(data) {
+		for (var i = 0; i < data.data.length / perPage; i++) {
+			$scope.pages.push(i);
+		}
+	});
+
+	bike.getMaintenance(item, '?top=' + perPage + '&start=01/01/1999&page=0').then(function(data) {
+		$scope.maintenanceItems = data.data;
+	});
+
+	$scope.cancel = function() {
+		$mdDialog.cancel();
+	};
+
+	$scope.gotoPage = function(page) {
+		bike.getMaintenance(item, '?top=' + perPage + '&start=01/01/1999&page=' + page).then(function(data) {
+			$scope.maintenanceItems = data.data;
+		});		
+	};
+
 }])
 
 ;
