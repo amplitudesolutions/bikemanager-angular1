@@ -1,22 +1,23 @@
 describe('Services: Bikes factory', function() {
 	var bike, $httpBackend;
 
+	beforeEach(module(function($provide) {
+		$provide.constant("API_URL", "http://localhost:443/api/");
+		$provide.constant("TEMP_USER", "581df76e09f63ef825000004");
+	}));
+
 	var RESPONSE_BIKE = {
 		'_id': '1',
 		'name': 'Transition Scout',
 		'year': '2016',
-		'size': 'Large'
+		'size': 'Large',
+		'user': '581df76e09f63ef825000004'
 	};
 
 	var RESPONSE_SUCCESS = [];
 	RESPONSE_SUCCESS.push(RESPONSE_BIKE);
 
 	var API = "http://localhost:443/api/";
-
-	beforeEach(module(function($provide) {
-		$provide.constant("API_URL", "http://localhost:443/api/");
-		$provide.constant("TEMP_USER", "581df76e09f63ef825000004");
-	}));
 
 	beforeEach(angular.mock.module('amplitudeApp.services.bikeService'));
 
